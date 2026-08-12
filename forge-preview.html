@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE — Navigate the whole system before you pay | HSW365</title>
+<meta name="description" content="Walk through the Offer FORGE system free. Read the frameworks, then unlock the full build for $47 when you're ready.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0f; --ink2:#0f0f17; --panel:#12121c; --line:#20202e;
+    --cyan:#22d3ee; --violet:#a855f7; --red:#ef4444; --yellow:#fbbf24;
+    --txt:#e7e7ef; --mut:#9a9ab0;
+    --head:'Barlow Condensed',sans-serif; --mono:'Space Mono',monospace; --body:'Inter',sans-serif;
+    --nav:284px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--txt);font-family:var(--body);line-height:1.65}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--head);text-transform:uppercase;letter-spacing:.5px;line-height:1.05}
+  .kick{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+  .btn{display:inline-block;font-family:var(--head);font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:13px 24px;border-radius:10px;cursor:pointer;transition:.2s;border:1px solid transparent}
+  .btn-p{background:linear-gradient(120deg,var(--cyan),var(--violet));color:var(--ink)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(34,211,238,.25)}
+  .btn-g{border-color:var(--line);color:var(--txt)}
+  .btn-g:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  header.top{position:sticky;top:0;z-index:40;background:rgba(10,10,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header.top .bar{max-width:1180px;margin:0 auto;padding:0 22px;height:62px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--head);font-weight:800;font-size:22px}
+  .logo b{color:var(--cyan)} .logo em{color:var(--violet);font-style:normal}
+  .top .btn{padding:9px 18px;font-size:14px}
+
+  .shell{max-width:1180px;margin:0 auto;padding:34px 22px 90px;display:grid;grid-template-columns:var(--nav) 1fr;gap:34px}
+  @media(max-width:880px){.shell{grid-template-columns:1fr;gap:20px}}
+
+  /* side nav */
+  .side{position:sticky;top:84px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  @media(max-width:880px){.side{position:static}}
+  .side .kick{margin-bottom:12px;display:block}
+  .side a{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:9px;font-size:13.5px;color:var(--mut);margin-bottom:2px}
+  .side a:hover{background:var(--ink2);color:var(--txt)}
+  .side a.lock{color:#6b6b80}
+  .side .num{font-family:var(--mono);font-size:11px;color:var(--violet);min-width:20px}
+  .side .lk{margin-left:auto;font-family:var(--mono);font-size:10px;color:#6b6b80}
+  .side .free{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--cyan)}
+
+  .intro{margin-bottom:30px}
+  .intro h1{font-size:clamp(38px,6vw,60px)}
+  .intro h1 .g{background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .intro p{color:var(--mut);font-size:17px;max-width:640px;margin-top:12px}
+  .banner{margin-top:20px;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-family:var(--mono);font-size:12.5px;color:var(--mut);background:var(--ink2)}
+  .banner b{color:var(--cyan)}
+
+  .mod{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:18px;scroll-margin-top:82px}
+  .mod .tag{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+  .mod.freem .tag{color:var(--cyan)} .mod.lockm .tag{color:#6b6b80}
+  .mod h2{font-size:30px;margin:8px 0 12px}
+  .mod p{color:var(--mut);font-size:15.5px;margin-bottom:12px}
+  .mod ul{margin:0 0 4px 18px} .mod li{color:var(--mut);font-size:15px;margin:6px 0}
+  .mod b{color:var(--txt)}
+
+  .locked-body{position:relative;filter:blur(5px);opacity:.5;pointer-events:none;user-select:none;max-height:120px;overflow:hidden}
+  .lockrow{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+  .lockbadge{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--yellow);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+
+  .paywall{margin-top:26px;background:radial-gradient(600px 240px at 80% 0,rgba(168,85,247,.18),transparent),linear-gradient(160deg,var(--ink2),var(--panel));border:1px solid var(--cyan);border-radius:18px;padding:38px 30px;text-align:center}
+  .paywall h2{font-size:clamp(28px,5vw,44px)}
+  .paywall p{color:var(--mut);max-width:560px;margin:12px auto 22px;font-size:16px}
+  .paywall .price{font-family:var(--head);font-size:52px;color:var(--txt)}
+  .paywall .price small{font-size:16px;color:var(--mut);font-family:var(--body)}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .mini{font-family:var(--mono);font-size:11.5px;color:var(--mut);margin-top:16px}
+
+  footer{border-top:1px solid var(--line);text-align:center;padding:40px 20px;color:var(--mut)}
+  footer p{font-family:var(--mono);font-size:12px;margin:3px 0}
+  .motto{color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="bar">
+  <a href="hsw365-os.html" class="logo"><b>FORGE</b> <em>by HSW365</em></a>
+  <a href="https://hsw365.github.io/FORGE" class="btn btn-p">Unlock — $47</a>
+</div></header>
+
+<div class="shell">
+
+  <!-- SIDE NAV -->
+  <aside class="side">
+    <span class="kick">The FORGE system</span>
+    <a href="#m1"><span class="num">01</span> The Offer Equation <span class="free">FREE</span></a>
+    <a href="#m2"><span class="num">02</span> Find the Painful Problem <span class="free">FREE</span></a>
+    <a href="#m3"><span class="num">03</span> Value Stacking <span class="free">FREE</span></a>
+    <a href="#m4" class="lock"><span class="num">04</span> Pricing Psychology <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">05</span> The Irresistible Guarantee <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">06</span> Honest Scarcity &amp; Urgency <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">07</span> Naming the Offer <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">08</span> The Bonus Stack <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">09</span> Objection Crushers <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">10</span> One-Page Sales Argument <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">11</span> Fast-Cash Launch Plan <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">12</span> Deliver Without Burnout <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">13</span> The Continuity Ladder <span class="lk">LOCK</span></a>
+    <a href="#m4" class="lock"><span class="num">14</span> The 48-Hour Forge Sprint <span class="lk">LOCK</span></a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="intro">
+      <span class="kick">Navigate before you pay</span>
+      <h1>Walk the whole <span class="g">FORGE</span> — then decide.</h1>
+      <p>This is the Offer FORGE system: how to build an offer people can't say no to. The first three modules are open. Read them, feel the value, and unlock the full 14-part build when you're ready.</p>
+      <div class="banner"><b>Free to browse.</b> Nothing here asks for a card. When you unlock, checkout opens on the live FORGE page.</div>
+    </div>
+
+    <!-- FREE 1 -->
+    <section id="m1" class="mod freem">
+      <span class="tag">Module 01 · Open</span>
+      <h2>The Offer Equation</h2>
+      <p>A great offer isn't a lower price — it's a higher perceived value against a lower perceived cost. FORGE runs every offer through one equation:</p>
+      <p><b>Value = (Dream Outcome × Belief it'll work) ÷ (Time it takes × Effort it takes)</b></p>
+      <p>Your job in the next modules is to push the top of that equation up and the bottom down until saying "no" feels irrational. Most founders only ever touch price. You're about to touch all four levers.</p>
+    </section>
+
+    <!-- FREE 2 -->
+    <section id="m2" class="mod freem">
+      <span class="tag">Module 02 · Open</span>
+      <h2>Find the Painful Problem</h2>
+      <p>You don't get paid for what you make. You get paid for the problem you remove. Before any offer, FORGE forces one answer: <b>what expensive, urgent, recurring pain does this end?</b></p>
+      <ul>
+        <li><b>Expensive</b> — it's already costing them money, time, or status.</li>
+        <li><b>Urgent</b> — it hurts now, not "someday."</li>
+        <li><b>Recurring</b> — it comes back until someone solves it for good.</li>
+      </ul>
+      <p>Score your problem 1–5 on each. Under 10 out of 15, you don't have an offer yet — you have a feature. Fix that here before you build anything.</p>
+    </section>
+
+    <!-- FREE 3 -->
+    <section id="m3" class="mod freem">
+      <span class="tag">Module 03 · Open</span>
+      <h2>Value Stacking</h2>
+      <p>One deliverable is a product. A <b>stack</b> is an offer. FORGE teaches you to break the transformation into the pieces the buyer would otherwise have to assemble alone — and hand them all of it in one place.</p>
+      <ul>
+        <li>The core result (the thing they came for)</li>
+        <li>The shortcut (what saves them weeks)</li>
+        <li>The safety net (what removes the risk)</li>
+        <li>The proof (why they believe you)</li>
+      </ul>
+      <p>Price the stack against the cost of <em>not</em> solving the problem — never against your hours. That reframe is where the next eleven modules live.</p>
+    </section>
+
+    <!-- LOCK PREVIEW -->
+    <section id="m4" class="mod lockm">
+      <span class="tag">Modules 04–14 · Locked</span>
+      <h2>Where the money gets made</h2>
+      <p>The first three modules set the foundation. The next eleven are the build — the exact plays used to launch offers that convert:</p>
+      <div class="locked-body">
+        <p>Pricing psychology: anchoring, the decoy tier, and why the middle option wins. The irresistible guarantee that reverses risk without exposing you. Honest scarcity that respects the buyer and still moves them. Naming so the offer sells itself in three words. The bonus stack that makes the price feel like a rounding error. Objection crushers mapped to every "but what about..." The one-page sales argument you can paste anywhere. The fast-cash launch plan for your first ten sales. Delivery systems so you don't drown in fulfillment. The continuity ladder that turns one sale into monthly income. And the 48-hour Forge Sprint to ship the whole thing this weekend.</p>
+      </div>
+      <div class="lockrow">
+        <span class="lockbadge">11 modules locked</span>
+        <span class="lockbadge">14-part PDF build</span>
+        <span class="lockbadge">Fill-in templates</span>
+      </div>
+    </section>
+
+    <!-- PAYWALL -->
+    <div class="paywall">
+      <span class="kick">You've seen the foundation</span>
+      <h2>Unlock the full FORGE</h2>
+      <p>Get all 14 modules, the fill-in templates, and the 48-hour sprint. One payment, yours forever.</p>
+      <div class="price">$47<small> one-time</small></div>
+      <div class="cta-row">
+        <a href="https://hsw365.github.io/FORGE" class="btn btn-p">Unlock full FORGE</a>
+        <a href="hsw365-os.html" class="btn btn-g">Back to HSW365 OS</a>
+      </div>
+      <div class="mini">Secure checkout on the live FORGE page · Cash App $hsw365 · book@hoodstar365.com</div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p class="logo"><b>FORGE</b> <em>by HSW365</em></p>
+  <p>HSW365 Media LLC · Vineland, NJ · book@hoodstar365.com</p>
+  <p class="motto">Turn Negative Into Positive</p>
+</footer>
+
+</body>
+</html>

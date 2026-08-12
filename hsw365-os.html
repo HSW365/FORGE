@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSW365 OS — The AI command center for solo founders</title>
+<meta name="description" content="One veteran ran an entire empire solo. HSW365 OS is the AI operating system that remembers everything you build, answers your calls, and ships your apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0f; --ink2:#0f0f17; --panel:#12121c; --line:#20202e;
+    --cyan:#22d3ee; --violet:#a855f7; --red:#ef4444; --yellow:#fbbf24;
+    --txt:#e7e7ef; --mut:#9a9ab0;
+    --head:'Barlow Condensed',sans-serif; --mono:'Space Mono',monospace; --body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--txt);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .kick{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+  h1,h2,h3{font-family:var(--head);line-height:1.02;letter-spacing:.5px;text-transform:uppercase}
+  .btn{display:inline-block;font-family:var(--head);font-weight:700;font-size:17px;letter-spacing:1px;text-transform:uppercase;padding:14px 26px;border-radius:10px;transition:.2s;cursor:pointer;border:1px solid transparent}
+  .btn-p{background:linear-gradient(120deg,var(--cyan),var(--violet));color:var(--ink)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(34,211,238,.25)}
+  .btn-g{border-color:var(--line);color:var(--txt);background:transparent}
+  .btn-g:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-family:var(--head);font-weight:800;font-size:24px;letter-spacing:1px}
+  .logo b{color:var(--cyan)} .logo span{color:var(--violet)}
+  .nlinks{display:flex;gap:28px;align-items:center}
+  .nlinks a{font-family:var(--mono);font-size:13px;color:var(--mut)}
+  .nlinks a:hover{color:var(--cyan)}
+  @media(max-width:760px){.nlinks a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{position:relative;padding:96px 0 72px;text-align:center;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 300px at 50% -10%,rgba(168,85,247,.18),transparent),
+    radial-gradient(500px 260px at 15% 20%,rgba(34,211,238,.12),transparent);pointer-events:none}
+  .hero h1{font-size:clamp(46px,9vw,88px);margin:16px 0 10px}
+  .hero h1 .g{background:linear-gradient(120deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{max-width:660px;margin:0 auto 30px;font-size:19px;color:var(--mut)}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .mini{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--mut)}
+
+  /* proof strip */
+  .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink2)}
+  .proof .wrap{display:flex;gap:34px;flex-wrap:wrap;justify-content:center;padding:22px 24px;text-align:center}
+  .proof div{font-family:var(--mono);font-size:12px;color:var(--mut)}
+  .proof b{color:var(--cyan);font-size:20px;font-family:var(--head);display:block}
+
+  section{padding:78px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 46px}
+  .sec-head h2{font-size:clamp(34px,6vw,56px);margin:12px 0}
+  .sec-head p{color:var(--mut);font-size:17px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;transition:.2s}
+  .card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+  .card .tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--violet)}
+  .card h3{font-size:26px;margin:10px 0 8px}
+  .card p{color:var(--mut);font-size:15px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+
+  /* case */
+  .case{background:linear-gradient(160deg,var(--ink2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:48px 40px;text-align:center}
+  .case h2{font-size:clamp(30px,5vw,46px)}
+  .case p{max-width:720px;margin:14px auto 0;color:var(--mut);font-size:17px}
+  .stack{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+  .chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--txt)}
+
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:960px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.price-grid{grid-template-columns:1fr}}
+  .plan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
+  .plan.feat{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan),0 20px 50px rgba(34,211,238,.12);position:relative}
+  .plan.feat:before{content:"MOST POPULAR";position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--cyan);color:var(--ink);font-family:var(--mono);font-size:10px;letter-spacing:1px;padding:4px 12px;border-radius:999px;font-weight:700}
+  .plan h3{font-size:24px}
+  .plan .cost{font-family:var(--head);font-size:40px;margin:8px 0 2px;color:var(--txt)}
+  .plan .cost small{font-size:15px;color:var(--mut);font-family:var(--body)}
+  .plan ul{list-style:none;margin:16px 0 22px;flex:1}
+  .plan li{font-size:14px;color:var(--mut);padding:7px 0;border-bottom:1px dashed var(--line)}
+  .plan li b{color:var(--txt)}
+
+  /* free preview band */
+  .free{background:radial-gradient(700px 300px at 80% 0,rgba(168,85,247,.16),transparent),var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .free h2{font-size:clamp(30px,5vw,50px)}
+  .free p{color:var(--mut);max-width:620px;margin:14px auto 26px;font-size:17px}
+
+  footer{padding:54px 0 40px;border-top:1px solid var(--line);text-align:center;color:var(--mut)}
+  footer .logo{font-size:26px;margin-bottom:10px}
+  footer p{font-family:var(--mono);font-size:12px;margin:4px 0}
+  .motto{color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="logo"><b>HSW</b>365 <span>OS</span></div>
+  <div class="nlinks">
+    <a href="#modules">Modules</a>
+    <a href="#proof">Proof</a>
+    <a href="#pricing">Pricing</a>
+    <a href="forge-preview.html" class="btn btn-p" style="padding:9px 18px;font-size:14px">Explore Free</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="kick">The AI command center for solo founders</span>
+  <h1>Run an empire<br><span class="g">like a whole team.</span></h1>
+  <p class="sub">HSW365 OS is the AI operating system that remembers everything you build, answers your phone, and ships your products — so one person can move like fifty.</p>
+  <div class="cta-row">
+    <a href="forge-preview.html" class="btn btn-p">Explore before you pay</a>
+    <a href="#pricing" class="btn btn-g">See the plans</a>
+  </div>
+  <div class="mini">No card to look around · Built and run by one U.S. Army veteran</div>
+</div></header>
+
+<div class="proof"><div class="wrap">
+  <div><b>1</b>founder, solo</div>
+  <div><b>12+</b>live products shipped</div>
+  <div><b>24/7</b>AI phone + memory</div>
+  <div><b>0</b>employees needed to start</div>
+</div></div>
+
+<section id="modules"><div class="wrap">
+  <div class="sec-head">
+    <span class="kick">What's inside the OS</span>
+    <h2>Four systems. One founder.</h2>
+    <p>Each module replaces a role you'd normally have to hire for. Turn them on as you grow.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag"><span class="dot" style="background:var(--cyan)"></span>Memory</span>
+      <h3>Clone Agent</h3>
+      <p>Your AI second brain. It remembers every project, credential, decision, file, and idea across every conversation — then applies that context automatically. Never re-explain your business again.</p>
+    </div>
+    <div class="card">
+      <span class="tag"><span class="dot" style="background:var(--violet)"></span>Front desk</span>
+      <h3>AI Team — CallTwin + QUEENEE</h3>
+      <p>A voice agent that answers your calls, books appointments, and follows up by text 24/7. Your business sounds staffed even when it's just you.</p>
+    </div>
+    <div class="card">
+      <span class="tag"><span class="dot" style="background:var(--yellow)"></span>Builder</span>
+      <h3>ANAI — Ship products</h3>
+      <p>Turn an idea into a working app, landing page, or storefront. The build arm of the OS that took one founder from concept to App Store, live.</p>
+    </div>
+    <div class="card">
+      <span class="tag"><span class="dot" style="background:var(--red)"></span>Playbooks</span>
+      <h3>FORGE + Build Series</h3>
+      <p>The exact frameworks used to build the empire — offer creation, launches, and systems. Navigate the whole library free before you ever pay.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="proof"><div class="wrap">
+  <div class="case">
+    <span class="kick">The proof is the product</span>
+    <h2>One veteran. A whole empire. No team.</h2>
+    <p>SaaS, iOS apps, a streetwear label, published books, a record label, a podcast, and a speaking tour — all run solo on this exact stack. HSW365 OS isn't a demo. It's the system that already runs a real business every day.</p>
+    <div class="stack">
+      <span class="chip">Clone Agent memory</span>
+      <span class="chip">CallTwin voice</span>
+      <span class="chip">QUEENEE front desk</span>
+      <span class="chip">ANAI builder</span>
+      <span class="chip">FORGE playbooks</span>
+      <span class="chip">Turn Negative Into Positive</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="pricing"><div class="wrap">
+  <div class="sec-head">
+    <span class="kick">Pricing</span>
+    <h2>Start free. Scale when it pays.</h2>
+    <p>Look around the whole system before you spend a dollar. Upgrade the moment it earns its keep.</p>
+  </div>
+  <div class="price-grid">
+    <div class="plan">
+      <h3>Explore</h3>
+      <div class="cost">$0</div>
+      <ul>
+        <li>Navigate <b>FORGE</b> free</li>
+        <li>Read the Build Series previews</li>
+        <li>See the OS in action</li>
+        <li>No card required</li>
+      </ul>
+      <a href="forge-preview.html" class="btn btn-g">Start exploring</a>
+    </div>
+    <div class="plan feat">
+      <h3>Founder Clone</h3>
+      <div class="cost">$49<small>/mo</small></div>
+      <ul>
+        <li><b>Clone Agent</b> persistent memory</li>
+        <li>Unlimited projects + recall</li>
+        <li>Full FORGE + Build Series</li>
+        <li>Priority updates</li>
+      </ul>
+      <a href="#get" class="btn btn-p">Get the Clone</a>
+    </div>
+    <div class="plan">
+      <h3>AI Team</h3>
+      <div class="cost">$299<small> + $99/mo</small></div>
+      <ul>
+        <li>Everything in Founder Clone</li>
+        <li><b>CallTwin</b> AI phone agent</li>
+        <li><b>QUEENEE</b> AI front desk</li>
+        <li>Booking + SMS follow-up</li>
+      </ul>
+      <a href="#get" class="btn btn-g">Build my team</a>
+    </div>
+    <div class="plan">
+      <h3>Empire</h3>
+      <div class="cost">Custom</div>
+      <ul>
+        <li>Done-for-you setup</li>
+        <li>ANAI product builds</li>
+        <li>Custom voice + branding</li>
+        <li>Direct line to the founder</li>
+      </ul>
+      <a href="mailto:book@hoodstar365.com?subject=HSW365%20OS%20Empire" class="btn btn-g">Talk to us</a>
+    </div>
+  </div>
+  <p class="mini" style="text-align:center;margin-top:22px">On-ramp: grab a Build Series playbook first — SHIP IT $27 · TURN NEGATIVE $17 · Offer FORGE $47.</p>
+</div></section>
+
+<section id="get" class="free"><div class="wrap">
+  <span class="kick">Navigate before you subscribe</span>
+  <h2>See everything. Pay when you're ready.</h2>
+  <p>Walk through the full FORGE system and the Build Series with nothing locked behind a signup wall. When it clicks, one tap turns on the OS.</p>
+  <div class="cta-row" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a href="forge-preview.html" class="btn btn-p">Explore FORGE free</a>
+    <a href="https://cash.app/$hsw365" class="btn btn-g">Activate the OS</a>
+  </div>
+  <div class="mini">Cash App $hsw365 · book@hoodstar365.com</div>
+</div></section>
+
+<footer>
+  <div class="logo"><b>HSW</b>365 <span>OS</span></div>
+  <p>HSW365 Media LLC · HOODSTAR ENT LLC · Vineland, NJ</p>
+  <p>book@hoodstar365.com · Cash App $hsw365</p>
+  <p class="motto">Turn Negative Into Positive</p>
+</footer>
+
+</body>
+</html>
